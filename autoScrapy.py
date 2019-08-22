@@ -81,12 +81,7 @@ class siteMovieData():
         r, title = self.getDecode(self.missionList)
         # 通过getMovieData方法获取到一个字典dic (根据tools里的dataModel)
         dic=self.getMovieData(r)
-        pattern = re.compile('.*?(\\d+)')
-        # 优化时间
-        publishyear = pattern.fidall(dic['publishyear'])
-        if publishyear != []:
-            dic['publishyear'] = publishyear[0]
-        # 将网页标题一并组装进dic里
+
         dic['title']=title
         # 以该网页的url为键，刚刚获取的字典dic为值组装为新的outputData
         self.outputData[self.missionList]=dic
