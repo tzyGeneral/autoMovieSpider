@@ -140,7 +140,8 @@ class Crawl(threading.Thread):
             # 发起http请求，获取响应内容，追加到数据队列里，等待解析
             try:
                 response = siteMovieData(url).getDic()[url]
-            except:
+            except Exception as e:
+                print(e)
                 response = None
             if response:
                 data = {
@@ -164,7 +165,7 @@ def main():
     # 生成数据队列 ，请求以后，响应内容放到数据队列里
     data_list = queue.Queue()
     # 循环生成多个请求url
-    urls = get_url('http://aaa11.info')
+    urls = get_url('http://dyw9955.com/')
     for url in urls:
         # 加入请求队列
         url = url.replace('\n', '').replace(' ', '')
